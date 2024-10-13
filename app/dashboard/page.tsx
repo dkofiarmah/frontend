@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import { Bell, Search, Upload, Database, Network, ChevronDown, ExternalLink, Zap, TrendingUp, AlertTriangle, Globe } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -6,7 +8,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { AreaChart, Bar, BarChart, Line, LineChart } from "@/components/ui/chart"
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import {ChartConfig,ChartContainer,ChartTooltip,ChartTooltipContent} from "@/components/ui/chart"
 
 export default function Dashboard() {
   return (
@@ -116,21 +119,57 @@ export default function Dashboard() {
                 <CardTitle>Trending Topics Over Time</CardTitle>
               </CardHeader>
               <CardContent className="pl-2">
-                <AreaChart
+              <AreaChart
                   className="h-[200px]"
                   data={[
-                    { name: "Jan", "AI": 111, "Cybersecurity": 35, "Blockchain": 99 },
-                    { name: "Feb", "AI": 157, "Cybersecurity": 78, "Blockchain": 43 },
-                    { name: "Mar", "AI": 129, "Cybersecurity": 110, "Blockchain": 58 },
-                    { name: "Apr", "AI": 187, "Cybersecurity": 80, "Blockchain": 61 },
-                    { name: "May", "AI": 200, "Cybersecurity": 150, "Blockchain": 105 },
+                    { month: "Jan", AI: 111, Cybersecurity: 35, Blockchain: 99 },
+                    { month: "Feb", AI: 157, Cybersecurity: 78, Blockchain: 43 },
+                    { month: "Mar", AI: 129, Cybersecurity: 110, Blockchain: 58 },
+                    { month: "Apr", AI: 187, Cybersecurity: 80, Blockchain: 61 },
+                    { month: "May", AI: 200, Cybersecurity: 150, Blockchain: 105 },
                   ]}
-                  index="name"
-                  categories={["AI", "Cybersecurity", "Blockchain"]}
-                  colors={["cyan", "indigo", "fuchsia"]}
-                  valueFormatter={(number: number) => `${number} mentions`}
-                  yAxisWidth={60}
-                />
+                  margin={{
+                    left: 12,
+                    right: 12,
+                  }}
+                >
+                  <CartesianGrid vertical={false} />
+                  <XAxis
+                    dataKey="month"
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={8}
+                    tickFormatter={(value) => value.slice(0, 3)}
+                  />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="dot" />}
+                  />
+                  <Area
+                    dataKey="AI"
+                    type="natural"
+                    fill="var(--color-ai)" // Use CSS variable for color
+                    fillOpacity={0.4}
+                    stroke="var(--color-ai)" // Use CSS variable for stroke
+                    stackId="a"
+                  />
+                  <Area
+                    dataKey="Cybersecurity"
+                    type="natural"
+                    fill="var(--color-cybersecurity)" // Use CSS variable for color
+                    fillOpacity={0.4}
+                    stroke="var(--color-cybersecurity)" // Use CSS variable for stroke
+                    stackId="a"
+                  />
+                  <Area
+                    dataKey="Blockchain"
+                    type="natural"
+                    fill="var(--color-blockchain)" // Use CSS variable for color
+                    fillOpacity={0.4}
+                    stroke="var(--color-blockchain)" // Use CSS variable for stroke
+                    stackId="a"
+                  />
+                </AreaChart>
               </CardContent>
             </Card>
           </TabsContent>
@@ -140,7 +179,7 @@ export default function Dashboard() {
                 <CardTitle>Top Entities by Mentions</CardTitle>
               </CardHeader>
               <CardContent className="pl-2">
-                <BarChart
+              <BarChart
                   className="h-[200px]"
                   data={[
                     { name: "OpenAI", value: 156 },
@@ -149,12 +188,21 @@ export default function Dashboard() {
                     { name: "Apple", value: 107 },
                     { name: "Microsoft", value: 98 },
                   ]}
-                  index="name"
-                  categories={["value"]}
-                  colors={["cyan"]}
-                  valueFormatter={(number: number) => `${number} mentions`}
-                  yAxisWidth={48}
-                />
+                >
+                  <CartesianGrid vertical={false} />
+                  <XAxis
+                    dataKey="name"
+                    tickLine={false}
+                    tickMargin={10}
+                    axisLine={false}
+                    tickFormatter={(value) => value.slice(0, 3)}
+                  />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="dashed" />}
+                  />
+                  <Bar dataKey="value" fill="var(--color-bar)" radius={4} />
+                </BarChart>
               </CardContent>
             </Card>
           </TabsContent>
@@ -164,7 +212,7 @@ export default function Dashboard() {
                 <CardTitle>Sentiment Analysis of Key Topics</CardTitle>
               </CardHeader>
               <CardContent className="pl-2">
-                <BarChart
+              <BarChart
                   className="h-[200px]"
                   data={[
                     { name: "AI", positive: 65, neutral: 25, negative: 10 },
@@ -173,13 +221,23 @@ export default function Dashboard() {
                     { name: "Politics", positive: 20, neutral: 30, negative: 50 },
                     { name: "Healthcare", positive: 55, neutral: 30, negative: 15 },
                   ]}
-                  index="name"
-                  categories={["positive", "neutral", "negative"]}
-                  colors={["emerald", "yellow", "rose"]}
-                  valueFormatter={(number: number) => `${number}%`}
-                  layout="vertical"
-                  yAxisWidth={80}
-                />
+                >
+                  <CartesianGrid vertical={false} />
+                  <XAxis
+                    dataKey="name"
+                    tickLine={false}
+                    tickMargin={10}
+                    axisLine={false}
+                    tickFormatter={(value) => value.slice(0, 3)}
+                  />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="dashed" />}
+                  />
+                  <Bar dataKey="positive" fill="var(--color-positive)" radius={4} />
+                  <Bar dataKey="neutral" fill="var(--color-neutral)" radius={4} />
+                  <Bar dataKey="negative" fill="var(--color-negative)" radius={4} />
+                </BarChart>
               </CardContent>
             </Card>
           </TabsContent>
