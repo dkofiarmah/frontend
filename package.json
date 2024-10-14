@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.0",
+    "@mui/material": "^6.1.3",
     "@next/swc-wasm-nodejs": "13.5.1",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -45,6 +48,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "d3": "^7.9.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "eslint": "8.49.0",
@@ -57,8 +61,10 @@
     "react": "18.2.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "18.2.0",
+    "react-force-graph": "^1.44.5",
     "react-hook-form": "^7.53.0",
     "react-resizable-panels": "^2.1.3",
+    "react-router-dom": "^6.27.0",
     "recharts": "^2.13.0",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
@@ -67,5 +73,9 @@
     "typescript": "5.2.2",
     "vaul": "^0.9.9",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/react-router-dom": "^5.3.3"
   }
 }

@@ -1,14 +1,22 @@
-import React from 'react'
-import { Bell, Search, Upload, Database, Network, ChevronDown, ExternalLink, Zap, TrendingUp, AlertTriangle, Globe, Filter } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
+"use client"
+
+import React from 'react';
+import { useRouter } from 'next/router'; // Use Next.js router
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { ExternalLink, Filter } from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
 
 const NewsAnalysis = () => {
+  const router = useRouter(); // Initialize router for navigation
+
+  const handleViewDetail = () => {
+    router.push('/news-detail'); // Navigate to the news detail page
+  };
+
   return (
     <>
       {/* Main Content */}
@@ -38,7 +46,7 @@ const NewsAnalysis = () => {
             <SelectValue placeholder="Topic" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem  value="all">All Topics</SelectItem>
+            <SelectItem value="all">All Topics</SelectItem>
             <SelectItem value="tech">Technology</SelectItem>
             <SelectItem value="politics">Politics</SelectItem>
             <SelectItem value="economy">Economy</SelectItem>
@@ -89,7 +97,7 @@ const NewsAnalysis = () => {
             </div>
           </CardContent>
           <CardFooter className="text-sm text-slate-500 flex justify-between">
-            <Button variant="link" className="p-0">
+            <Button variant="link" className="p-0" onClick={handleViewDetail}>
               Full Article <ExternalLink className="ml-1 h-3 w-3" />
             </Button>
             <div className="flex items-center space-x-2">
@@ -132,7 +140,7 @@ const NewsAnalysis = () => {
             </div>
           </CardContent>
           <CardFooter className="text-sm text-slate-500 flex justify-between">
-            <Button variant="link" className="p-0">
+            <Button variant="link" className="p-0" onClick={handleViewDetail}>
               Full Article <ExternalLink className="ml-1 h-3 w-3" />
             </Button>
             <div className="flex items-center space-x-2">
