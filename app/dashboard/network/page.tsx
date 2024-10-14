@@ -40,7 +40,7 @@ const EntityNetwork: React.FC = () => {
     { source: "OpenAI", target: "Microsoft", strength: "strong" },
     { source: "OpenAI", target: "GPT-3", strength: "strong" },
     { source: "OpenAI", target: "DeepMind", strength: "weak" },
-    { id: "Elon Musk", target: "Microsoft", strength: "medium" },
+    { source: "Elon Musk", target: "Microsoft", strength: "medium" },
     { source: "Microsoft", target: "GPT-3", strength: "medium" },
   ];
 
@@ -74,10 +74,6 @@ const EntityNetwork: React.FC = () => {
     c => c.source === selectedEntity || c.target === selectedEntity
   );
 
-  const handleEntityChange = (value: string) => {
-    setSelectedEntity(value);
-  };
-
   return (
     <div className="container mx-auto p-4">
       <header className="mb-8 flex justify-between items-center">
@@ -92,12 +88,13 @@ const EntityNetwork: React.FC = () => {
         <div className="lg:w-3/4">
           {/* Network Controls */}
           <div className="flex flex-wrap justify-between mb-4 gap-2">
-            <Autocomplete
-              value={selectedEntity}
-              onChange={handleEntityChange}
-              options={entities.map(entity => entity.id)}
-              className="w-[180px]"
-            />
+            <div className="w-[180px]">
+              <Autocomplete
+                value={selectedEntity}
+                onChange={setSelectedEntity}
+                options={entities.map(entity => entity.id)}
+              />
+            </div>
             <Select>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Entity Type" />
