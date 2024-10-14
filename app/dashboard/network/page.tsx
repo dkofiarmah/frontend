@@ -48,13 +48,11 @@ const EntityNetwork: React.FC = () => {
     const width = 800;
     const height = 600;
 
-    // Set up the D3 force simulation
     const simulation = d3.forceSimulation<Entity>(entities)
       .force("link", d3.forceLink<Entity, Connection>(connections).id(d => d.id))
       .force("charge", d3.forceManyBody<Entity>())
       .force("center", d3.forceCenter<Entity>(width / 2, height / 2));
 
-    // Update the graph data on each tick of the simulation
     simulation.on("tick", () => {
       setGraphData({
         nodes: entities.map(entity => ({
@@ -66,7 +64,6 @@ const EntityNetwork: React.FC = () => {
       });
     });
 
-    // Cleanup function to stop the simulation when the component unmounts
     return () => {
       simulation.stop();
     };
@@ -93,10 +90,9 @@ const EntityNetwork: React.FC = () => {
           <div className="flex flex-wrap justify-between mb-4 gap-2">
             <Autocomplete
               value={selectedEntity}
-              onChange={setSelectedEntity}
+              onValueChange={setSelectedEntity}
               options={entities.map(entity => entity.id)}
-              getOptionLabel={(option) => option}
-              style={{ width: 180 }}
+              className="w-[180px]"
             />
             <Select>
               <SelectTrigger className="w-[180px]">
