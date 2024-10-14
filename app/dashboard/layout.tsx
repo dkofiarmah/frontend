@@ -16,26 +16,26 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
       {/* Sidebar */}
       <aside className="w-64 bg-slate-200 p-4 flex flex-col">
         <h1 className="text-2xl font-bold mb-8 text-cyan-800">IntelliSurve</h1>
-        <nav className="space-y-4 flex-grow">
+        <nav className="space-y-4 flex-grow justify-start">
           {[
             { path: '/dashboard', icon: <Zap className="mr-2 h-4 w-4" />, label: 'Dashboard' },
             { path: '/dashboard/news', icon: <Globe className="mr-2 h-4 w-4" />, label: 'News Feed' },
             { path: '/dashboard/network', icon: <Network className="mr-2 h-4 w-4" />, label: 'EntityHub' },
             { path: '/dashboard/search', icon: <Search className="mr-2 h-4 w-4" />, label: 'Advanced Search' },
-            { path: '/dashboard/alerts', icon: <Bell className="mr-2 h-4 w-4" />, label: 'Alerts' },
+            { path: '/dashboard/reports/alerts', icon: <Bell className="mr-2 h-4 w-4" />, label: 'Alerts' },
             { path: '/dashboard/reports', icon: <Briefcase className="mr-2 h-4 w-4" />, label: 'Reports' },
-            { path: '/dashboard/data-integration', icon: <Upload className="mr-2 h-4 w-4" />, label: 'Data Integration' },
-            { path: '/dashboard/data-sources', icon: <Database className="mr-2 h-4 w-4" />, label: 'Data Sources' },
+            { path: '/dashboard/config/integrate', icon: <Upload className="mr-2 h-4 w-4" />, label: 'Data Integration' },
+            { path: '/dashboard/config', icon: <Database className="mr-2 h-4 w-4" />, label: 'Data Sources' },
           ].map((item) => (
-            <a key={item.path} href={item.path} className="w-full justify-start">
-              <Button variant="ghost" className={pathname === item.path ? 'bg-slate-300' : ''}> {/* Highlight active link */}
+            <a key={item.path} href={item.path} className="w-full flex items-center justify-start">
+              <Button variant="ghost" className={`w-full justify-start ${pathname === item.path ? 'bg-slate-300' : ''}`}> {/* Highlight active link */}
                 {item.icon} {item.label}
               </Button>
             </a>
           ))}
         </nav>
         <div className="mt-auto">
-          <Button variant="ghost" className="w-full justify-start flex items-center" onClick={() => {
+          <Button variant="ghost" className="w-full justify-start flex items-left" onClick={() => {
             const hiddenElement = document.querySelector('.hidden');
             if (hiddenElement) {
               hiddenElement.classList.toggle('hidden');
