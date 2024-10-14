@@ -20,8 +20,14 @@ import {
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
+interface Entity {
+  name: string;
+  value: number;
+  description: string;
+}
+
 export default function Dashboard() {
-  const [selectedEntity, setSelectedEntity] = useState(null)
+  const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null)
 
   const trendData = [
     { month: "Jan", AI: 111, Cybersecurity: 35, Blockchain: 99 },
