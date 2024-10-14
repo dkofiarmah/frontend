@@ -9,7 +9,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#1A202C] text-gray-100">
       <header className="container mx-auto px-4 py-8">
         <nav className="flex justify-between items-center">
-          <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/afriinsight-logo-white-KJbXBVpzrWVXZXMXXXXXXXXX.png" alt="AfriInsight Logo" width={200} height={50} />
+          <Image src="https://wwyyftm1ftnx5euh.public.blob.vercel-storage.com/images/logo-site-SGMDWJGYYsnd5KXOpSjEt2z7YBwh4K.webp" alt="AfriInsight Logo" width={200} height={50} />
           <div className="space-x-4">
             <Link href="/login">
               <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-800">Login</Button>
@@ -36,9 +36,9 @@ export default function LandingPage() {
 
         <section className="mb-20 relative">
           <Image 
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/afriinsight-dashboard-LJbXBVpzrWVXZXMXXXXXXXXX.png" 
+            src="https://wwyyftm1ftnx5euh.public.blob.vercel-storage.com/images/dashboard-cPXC5nLmK7yYp3do79TcMa6QpTaxRU.png" 
             alt="AfriInsight Dashboard" 
-            width={1200} 
+            width={1504} 
             height={600} 
             className="rounded-lg shadow-2xl border-2 border-[#F6AD55]"
           />
@@ -81,9 +81,9 @@ export default function LandingPage() {
         <section className="text-center mb-20">
           <h2 className="text-3xl font-bold mb-8 text-white">Trusted by Global Powers</h2>
           <div className="flex justify-center space-x-12">
-            <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/client-logo-1-white-MJbXBVpzrWVXZXMXXXXXXXXX.png" alt="Client Logo 1" width={120} height={60} />
-            <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/client-logo-2-white-NJbXBVpzrWVXZXMXXXXXXXXX.png" alt="Client Logo 2" width={120} height={60} />
-            <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/client-logo-3-white-OJbXBVpzrWVXZXMXXXXXXXXX.png" alt="Client Logo 3" width={120} height={60} />
+            <Image src="https://wwyyftm1ftnx5euh.public.blob.vercel-storage.com/images/worldbank-rKlShbv63JyK0Z0GrIKk6A1FkLTmGy.png" alt="Client Logo 1" width={120} height={60} />
+            <Image src="https://wwyyftm1ftnx5euh.public.blob.vercel-storage.com/images/kiffc-8agJlaXxGNTU9c947CAgf94bpsLPzi.jpg" alt="Client Logo 2" width={120} height={60} />
+            <Image src="https://wwyyftm1ftnx5euh.public.blob.vercel-storage.com/images/afriexim-NfkzOxuVvpfP6BsaVBDyF2cWBbjLec.jpg" alt="Client Logo 3" width={120} height={60} />
           </div>
         </section>
 
@@ -98,7 +98,7 @@ export default function LandingPage() {
             </Link>
           </div>
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/africa-map-overlay-PJbXBVpzrWVXZXMXXXXXXXXX.png" alt="Africa Map Overlay" layout="fill" objectFit="cover" />
+            <Image src="https://wwyyftm1ftnx5euh.public.blob.vercel-storage.com/images/africa-VZHTNUmrWxLj8hT0upwkgehMTvRqAS.jpg" alt="Africa Map Overlay" layout="fill" objectFit="cover" />
           </div>
         </section>
       </main>
