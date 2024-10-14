@@ -9,11 +9,25 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import * as d3 from "d3";
 import Autocomplete from "@/components/ui/Autocomplete";
 
-const EntityNetwork = () => {
-  const [selectedEntity, setSelectedEntity] = useState("OpenAI");
-  const [graphData, setGraphData] = useState<{ nodes: any[]; links: any[] } | null>(null);
+interface Entity {
+  id: string;
+  type: string;
+  description: string;
+  x?: number;
+  y?: number;
+}
 
-  const entities = [
+interface Connection {
+  source: string;
+  target: string;
+  strength: string;
+}
+
+const EntityNetwork: React.FC = () => {
+  const [selectedEntity, setSelectedEntity] = useState("OpenAI");
+  const [graphData, setGraphData] = useState<{ nodes: Entity[]; links: Connection[] } | null>(null);
+
+  const entities: Entity[] = [
     { id: "OpenAI", type: "Organization", description: "Artificial Intelligence Research Laboratory" },
     { id: "Elon Musk", type: "Person", description: "Entrepreneur and business magnate" },
     { id: "Microsoft", type: "Organization", description: "Multinational technology corporation" },
@@ -21,7 +35,7 @@ const EntityNetwork = () => {
     { id: "DeepMind", type: "Organization", description: "AI research laboratory" },
   ];
 
-  const connections = [
+  const connections: Connection[] = [
     { source: "OpenAI", target: "Elon Musk", strength: "strong" },
     { source: "OpenAI", target: "Microsoft", strength: "strong" },
     { source: "OpenAI", target: "GPT-3", strength: "strong" },
@@ -35,10 +49,10 @@ const EntityNetwork = () => {
     const height = 600;
 
     // Set up the D3 force simulation
-    const simulation = d3.forceSimulation(entities)
-      .force("link", d3.forceLink(connections).id(d => d.id))
-      .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, height / 2));
+    const simulation = d3.forceSimulation<Entity>(entities)
+      .force("link", d3.forceLink<Entity, Connection>(connections).id(d => d.id))
+      .force("charge", d3.forceManyBody<Entity>())
+      .force("center", d3.forceCenter<Entity>(width / 2, height / 2));
 
     // Update the graph data on each tick of the simulation
     simulation.on("tick", () => {
@@ -56,7 +70,7 @@ const EntityNetwork = () => {
     return () => {
       simulation.stop();
     };
-  }, [entities, connections]);
+  }, []);
 
   const selectedEntityData = entities.find(e => e.id === selectedEntity);
   const entityConnections = connections.filter(
