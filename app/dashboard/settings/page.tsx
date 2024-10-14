@@ -11,11 +11,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function Settings() {
   return (
-    <div className="flex h-screen bg-slate-50 text-slate-900 font-mono">
-      {/* Sidebar (same as dashboard) */}
-      <aside className="w-64 bg-slate-200 p-4 flex flex-col">
-        {/* ... (sidebar content, same as in dashboard.tsx) ... */}
-      </aside>
+    <div>
+      <header className="mb-8 flex justify-between items-center">
+        <div>
+          <h2 className="text-3xl font-bold text-cyan-800">User Profile</h2>
+          <p className="text-slate-600">Manage your account settings and preferences</p>
+        </div>
+        <Input type="search" placeholder="Global search..." className="w-64" />
+      </header>
 
       {/* Main Content */}
       <main className="flex-1 p-8 overflow-auto">

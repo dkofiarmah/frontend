@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { User, Mail, Lock, Bell, Eye, EyeOff } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -10,18 +8,17 @@ import { Switch } from "@/components/ui/switch"
 
 export default function UserProfile() {
   return (
-    <div className="flex h-screen bg-slate-50 text-slate-900 font-mono">
-      {/* Sidebar (same as dashboard) */}
-      <aside className="w-64 bg-slate-200 p-4 flex flex-col">
-        {/* ... (sidebar content, same as in dashboard.tsx) ... */}
-      </aside>
+    <>
+      <header className="mb-8 flex justify-between items-center">
+        <div>
+          <h2 className="text-3xl font-bold text-cyan-800">User Profile</h2>
+          <p className="text-slate-600">Manage your account settings and preferences</p>
+        </div>
+        <Input type="search" placeholder="Global search..." className="w-64" />
+      </header>
 
       {/* Main Content */}
       <main className="flex-1 p-8 overflow-auto">
-        <header className="mb-8">
-          <h2 className="text-3xl font-bold text-cyan-800">User Profile</h2>
-          <p className="text-slate-600">Manage your account settings and preferences</p>
-        </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Personal Information */}
@@ -142,6 +139,6 @@ export default function UserProfile() {
           </Card>
         </div>
       </main>
-    </div>
+    </>
   )
 }
